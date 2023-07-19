@@ -27,7 +27,7 @@ SECRET_KEY = 'django-insecure-b7swo6xt7vbf+zu2!#6+t=^6^d7*9r0_f8z)9od*8j5uvgtp2o
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["paylio.up.railway.app"]
 
 
 # Application definition
