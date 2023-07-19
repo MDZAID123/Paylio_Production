@@ -91,12 +91,12 @@ WSGI_APPLICATION = 'payment_prj.wsgi.application'
 
 DATABASES={
     'default':{
-        'ENGINE':os.environ.get("ENGINE"),
-        'NAME':os.environ.get("NAME"),
-        'USER':os.environ.get("USER"),
-        'PASSWORD':os.environ.get('PASSWORD'),
-        'HOST':os.environ.get("HOST"),
-        'PORT':os.environ.get("PORT"),
+        'ENGINE':'django.db.backends.postgresql',
+        'NAME':'railway',
+        'USER':'postgres',
+        'PASSWORD':'cgR5kOdCuHhFW0ZT36oq',
+        'HOST':'containers-us-west-140.railway.app',
+        'PORT':5600,
     }
 }
 
