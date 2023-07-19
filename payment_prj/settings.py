@@ -14,6 +14,8 @@ from pathlib import Path
 
 import os
 
+import dj_database_url
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -22,12 +24,12 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-b7swo6xt7vbf+zu2!#6+t=^6^d7*9r0_f8z)9od*8j5uvgtp2o'
+SECRET_KEY = os.environ.get("SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ["paylio.up.railway.app"]
+ALLOWED_HOSTS = ["paylio.up.railway.app","*"]
 
 
 # Application definition
@@ -80,12 +82,26 @@ WSGI_APPLICATION = 'payment_prj.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': BASE_DIR / 'db.sqlite3',
+#     }
+# }
+
+DATABASES={
+    'default':{
+        'ENGINE':os.environ.get("ENGINE"),
+        'NAME':os.environ.get("NAME"),
+        'USER':os.environ.get("USER"),
+        'PASSWORD':os.environ.get('PASSWORD'),
+        'HOST':os.environ.get("HOST"),
+        'PORT':os.environ.get("PORT"),
     }
 }
+
+db_from_env=dj_database_url.config(conn_max_age=600)
+DATABASES['default'].update(db_from_env)
 
 
 # Password validation
